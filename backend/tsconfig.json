@@ -4,6 +4,8 @@
 		"sourceMap": true,
 		"strict": true,
 		"module": "commonjs",
-		"esModuleInterop": true
-	}
+		"esModuleInterop": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true
+    }
 }
