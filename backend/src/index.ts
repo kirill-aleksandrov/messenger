@@ -1,7 +1,10 @@
 import dotenv from 'dotenv';
 import express from 'express';
+import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
 import { createConnection } from 'typeorm';
 import { entities } from './entities';
+import { createAuthRouter } from './middleware/auth';
 
 dotenv.config();
 
@@ -17,6 +20,10 @@ createConnection({
 }).then(() => {
     const app = express();
 
+    app.use(cookieParser());
+    app.use(bodyParser.json());
+
+    app.use('/', createAuthRouter());
     app.get('/', (req, res) => res.send('Hello world'));
 
     app.listen(3000, () => console.log('Running'));
