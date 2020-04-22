@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
+import { Conversation } from './Conversation';
 
 @Entity()
 export class User {
@@ -16,4 +17,7 @@ export class User {
 
     @Column({ nullable: true })
     lastName?: string;
+
+    @ManyToMany(() => Conversation, conversation => conversation.participants)
+    conversations!: Conversation[];
 }
