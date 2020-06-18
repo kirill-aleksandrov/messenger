@@ -5,6 +5,19 @@
 		"strict": true,
 		"module": "es6",
 		"jsx": "react",
-		"esModuleInterop": true
-	}
+		"esModuleInterop": true,
+		"typeRoots": [
+			"./node_modules/@types",
+            "./custom_types"
+        ]
+	},
+	"plugins": [
+		{
+			"name": "typescript-plugin-css-modules",
+			"options": {
+				"classnameTransform": "asIs",
+				"customMatcher": ".m.css$",
+			}
+		}
+	]
 }
